@@ -30,14 +30,18 @@ server {
 listen 80;
 server_name redcarpetup.com;
 
-	return 301 https://$host$request_uri;
+	location / {
+  uwsgi_pass poc_1;
+  }
 }
 
 server {
 listen 80;
 server_name api.redcarpetup.com;
 
-	return 301 https://$host$request_uri;
+	location / {
+  uwsgi_pass poc_1;
+  }
 }
 
 server {
@@ -267,6 +271,7 @@ location ~   ^/snake(/.*|$) {
         } 
         proxy_pass http://127.0.0.1:9020$modified_uri; # match the name of upstream directive which is defined above
       }
+  
 
 }
 
