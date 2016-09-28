@@ -19,7 +19,7 @@ upstream prod_api_snake{
 }
 
 upstream poc_1{
-  uwsgi_pass flask:9001;
+  server flask:9001;
 }
 
 server {
@@ -243,7 +243,7 @@ location  / {
         proxy_set_header   SSL_CLIENT_CERT $ssl_client_cert;
         proxy_set_header   SSL_CLIENT_VERIFY $ssl_client_verify;
         proxy_set_header   SSL_SERVER_S_DN $ssl_client_s_dn;
-        proxy_pass http://poc_1; # match the name of upstream directive which is defined above
+        uwsgi_pass poc_1; # match the name of upstream directive which is defined above
       }
 location ~   ^/snake(/.*|$) {
         proxy_set_header Host $host;
