@@ -1,20 +1,24 @@
 upstream prod_app {
-  server flask:9001;
+  server unix:///var/run/app/production_web.sock; 
 }
 
 upstream prod_old_app {
-  server flask:9001;
+  server unix:///var/run/app/public2.sock;
 }
 
 upstream prod_api{
-  server flask:9001;
+  server unix:///var/run/app/production_api.sock; 
 }
 
 upstream prod_api2{
-  server flask:9001;
+  server unix:///var/run/app/production_api2.sock; 
 }
 
 upstream prod_api_snake{
+  server 127.0.0.1:9020; 
+}
+
+upstream old_app{
   server flask:9001;
 }
 
