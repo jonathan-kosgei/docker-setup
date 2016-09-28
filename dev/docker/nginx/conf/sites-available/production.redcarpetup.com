@@ -31,6 +31,7 @@ listen 80;
 server_name redcarpetup.com;
 
 	location / {
+  include uwsgi_params;
   uwsgi_pass poc_1;
   }
 }
@@ -40,6 +41,7 @@ listen 80;
 server_name api.redcarpetup.com;
 
 	location / {
+  include uwsgi_params;
   uwsgi_pass poc_1;
   }
 }
@@ -251,6 +253,7 @@ location  / {
         proxy_set_header   SSL_CLIENT_CERT $ssl_client_cert;
         proxy_set_header   SSL_CLIENT_VERIFY $ssl_client_verify;
         proxy_set_header   SSL_SERVER_S_DN $ssl_client_s_dn;
+        include uwsgi_params;
         uwsgi_pass poc_1; # match the name of upstream directive which is defined above
       }
 location ~   ^/snake(/.*|$) {
