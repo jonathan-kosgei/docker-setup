@@ -1,0 +1,3 @@
+[submodule "python/python"]
+	path = python/python
+	url = https://github.com/jonathan-kosgei/flask-rq.git
