@@ -1,1 +1,0 @@
-/etc/nginx/sites-available/plum.redcarpetup.com

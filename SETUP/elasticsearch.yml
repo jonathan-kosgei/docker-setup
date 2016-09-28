@@ -1,5 +1,0 @@
-path:
-  data: /es-data/data
-  logs: /es-data/log
-  plugins: /es-data/plugins
-  work: /es-data/work

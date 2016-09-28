@@ -18,6 +18,10 @@ upstream prod_api_snake{
   server 127.0.0.1:9020; 
 }
 
+upstream poc_1{
+  uwsgi_pass flask:9001;
+}
+
 server {
 listen 80;
 server_name redcarpetup.com;
@@ -45,8 +49,8 @@ server_name analysis.redcarpetup.com;
   #ssl_certificate_key /etc/nginx/ssl/namecheap-862404.redcarpetup.com.nopass;
 
  ssl on;
-  ssl_certificate /etc/nginx/ssl/namecheap-1549141.unified.crt;
-  ssl_certificate_key /etc/nginx/ssl/namecheap-1549141.key;
+  ssl_certificate /etc/nginx/ssl/nginx.crt;
+  ssl_certificate_key /etc/nginx/ssl/nginx.key;
    
    # enable session resumption to improve https performance
    # http://vincent.bernat.im/en/blog/2011-ssl-session-reuse-rfc5077.html
@@ -151,8 +155,8 @@ server_name api.redcarpetup.com;
   #ssl_certificate_key /etc/nginx/ssl/namecheap-862404.redcarpetup.com.nopass;
 
  ssl on;
-  ssl_certificate /etc/nginx/ssl/namecheap-1549141.unified.crt;
-  ssl_certificate_key /etc/nginx/ssl/namecheap-1549141.key;
+  ssl_certificate /etc/nginx/ssl/nginx.crt;
+  ssl_certificate_key /etc/nginx/ssl/nginx.key;
    
    # enable session resumption to improve https performance
    # http://vincent.bernat.im/en/blog/2011-ssl-session-reuse-rfc5077.html
@@ -239,7 +243,7 @@ location  / {
         proxy_set_header   SSL_CLIENT_CERT $ssl_client_cert;
         proxy_set_header   SSL_CLIENT_VERIFY $ssl_client_verify;
         proxy_set_header   SSL_SERVER_S_DN $ssl_client_s_dn;
-        proxy_pass http://prod_api2; # match the name of upstream directive which is defined above
+        proxy_pass http://poc_1; # match the name of upstream directive which is defined above
       }
 location ~   ^/snake(/.*|$) {
         proxy_set_header Host $host;
@@ -274,8 +278,8 @@ server_name redcarpetup.com;
   #ssl_certificate /etc/nginx/ssl/redcarpetup_redc_www.pem;
   #ssl_certificate_key /etc/nginx/ssl/namecheap-862404.redcarpetup.com.nopass;
 
-  ssl_certificate /etc/nginx/ssl/namecheap-1549141.unified.crt;
-  ssl_certificate_key /etc/nginx/ssl/namecheap-1549141.key;
+  ssl_certificate /etc/nginx/ssl/nginx.crt;
+  ssl_certificate_key /etc/nginx/ssl/nginx.key;
    
    # enable session resumption to improve https performance
    # http://vincent.bernat.im/en/blog/2011-ssl-session-reuse-rfc5077.html
@@ -387,8 +391,8 @@ location / {
   #ssl_certificate_key /etc/nginx/ssl/namecheap-862404.redcarpetup.com.nopass;
 
 
-  ssl_certificate /etc/nginx/ssl/namecheap-1549141.unified.crt;
-  ssl_certificate_key /etc/nginx/ssl/namecheap-1549141.key;
+  ssl_certificate /etc/nginx/ssl/nginx.crt;
+  ssl_certificate_key /etc/nginx/ssl/nginx.key;
 
    
    # enable session resumption to improve https performance
@@ -643,8 +647,8 @@ server_name api2.redcarpetup.com;
   #ssl_certificate /etc/nginx/ssl/redcarpetup_redc_www.pem;
   #ssl_certificate_key /etc/nginx/ssl/namecheap-862404.redcarpetup.com.nopass;
 
-  ssl_certificate /etc/nginx/ssl/namecheap-1549141.unified.crt;
-  ssl_certificate_key /etc/nginx/ssl/namecheap-1549141.key;
+  ssl_certificate /etc/nginx/ssl/nginx.crt;
+  ssl_certificate_key /etc/nginx/ssl/nginx.key;
    
    # enable session resumption to improve https performance
    # http://vincent.bernat.im/en/blog/2011-ssl-session-reuse-rfc5077.html

@@ -1,8 +1,0 @@
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
-alias ltr='ls -ltr'
-
-zstyle ':completion:*:sudo:*' command-path /opt/Python/bin  /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-
